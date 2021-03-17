@@ -37,6 +37,7 @@ public class MainActivity extends Activity{
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
+    private Button btnLogout;
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -49,8 +50,18 @@ public class MainActivity extends Activity{
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnLogout = findViewById(R.id.btnLogout);
 
         //queryPosts();
+
+        btnLogout.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                ParseUser.logOut();
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener(){
            public void onClick(View v){
